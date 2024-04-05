@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { baskerville } from '@/app/ui/font'
+import { SideNav } from '@/app/components/nav'
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang = "en">
+      <body className = {`${baskerville.className} antialiased flex h-screen flex-col md:flex-row md:overflow-hidden`}>
+        <div className = "w-full flex-none md:w-64">
+          <SideNav />
+        </div>
+        <div className = "flex-grow m-2 overflow-auto"> {children} </div>
+      </body>
     </html>
   );
 }
